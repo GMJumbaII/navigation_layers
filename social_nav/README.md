@@ -5,6 +5,7 @@
 1. launch your own nav stack: `roslaunch social_nav uol_mht_nav2d.launch`
 1. launch rviz: `rosrun rviz rviz`
 1. put a simulated human in place: 
+
     ```
 rostopic pub /people people_msgs/People "header:
   seq: 0
