@@ -15,6 +15,7 @@ namespace social_navigation_layers
         current_ = true;
         first_time_ = true;
         people_sub_ = nh.subscribe("/people", 1, &SocialLayer::peopleCallback, this);
+	ROS_INFO("subscribed to people");
     }
     
     void SocialLayer::peopleCallback(const people_msgs::People& people) {
