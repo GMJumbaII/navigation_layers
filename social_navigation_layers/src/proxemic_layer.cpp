@@ -69,6 +69,7 @@ namespace social_navigation_layers
         
         for(p_it = transformed_people_.begin(); p_it != transformed_people_.end(); ++p_it){
             people_msgs::Person person = *p_it;
+
             double angle = atan2(person.velocity.y, person.velocity.x);
             double mag = sqrt(pow(person.velocity.x,2) + pow(person.velocity.y, 2));
             double factor = 1.0 + mag * factor_;
@@ -116,14 +117,16 @@ namespace social_navigation_layers
             if((int)(end_y+dy) > max_j)
                 end_y = max_j - dy;
 
+/*
             double bx = ox + res / 2,
                    by = oy + res / 2;
+*/
             for(int i=start_x;i<end_x;i++){
                 for(int j=start_y;j<end_y;j++){
                   unsigned char old_cost = costmap->getCost(i+dx, j+dy);
                   if(old_cost == costmap_2d::NO_INFORMATION)
                     continue;
-
+/*
                   double x = bx+i*res, y = by+j*res;
                   double ma = atan2(y-cy,x-cx);
                   double diff = angles::shortest_angular_distance(angle, ma);
@@ -136,7 +139,9 @@ namespace social_navigation_layers
                   if(a < cutoff_)
                     continue;
                   unsigned char cvalue = (unsigned char) a;
-                  costmap->setCost(i+dx, j+dy, std::max(cvalue, old_cost));
+*/
+//                  costmap->setCost(i+dx, j+dy, std::max(cvalue, old_cost));
+                  costmap->setCost(i+dx, j+dy, 254);
 
               }
             } 
